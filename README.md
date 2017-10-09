@@ -8,7 +8,7 @@
 5. Name the Lambda Function "Test-Example-Skill".
 6. Select the runtime as Java 8.
 7. Build a jar file to upload it into the lambda function. There are two ways:
-- Using maven: go to the directory containing pom.xml, and run 'mvn assembly:assembly -DdescriptorId=jar-with-dependencies package'. This will generate a zip file named "session-1.0-jar-with-dependencies.jar" in the target directory.
+- Using maven: go to the directory containing pom.xml, and run 'mvn assembly:assembly -DdescriptorId=jar-with-dependencies package'. This will generate a zip file named "alexa-1.0-jar-with-dependencies.jar" in the target directory.
 8. Select Code entry type as "Upload a .ZIP file" and then upload the jar file created in step 7 from the build directory to Lambda.
 9. Set the Handler as <i>by.nastin.example.alexa.handler.TestSpeechletRequestStreamHandler</i> (this refers to the Lambda RequestStreamHandler file in the zip).
 10. Choose an existing role - lambda_basic_execution.
