@@ -22,6 +22,7 @@ public class TestSpeechlet implements Speechlet {
     private static final String DURATION_KEY = "DURATION";
     private static final String BANDWIDTH_SLOT = "Bandwidth";
     private static final String DURATION_SLOT = "Duration";
+    private long credits = 0;
 
     @Override
     public void onSessionStarted(final SessionStartedRequest request, final Session session) throws SpeechletException {
@@ -47,6 +48,12 @@ public class TestSpeechlet implements Speechlet {
             return upBandwidth(intent, session);
         } else if ("TellBandwidthIntent".equals(intentName)) {
             return tellBandwidth(intent, session);
+        } else if ("TellCreditsIntent".equals(intentName)) {
+            return tellCredits(intent, session);
+        } else if ("AddCreditsIntent".equals(intentName)) {
+            return addCredits(intent, session);
+        } else if ("NoAddCreditsIntent".equals(intentName)) {
+            return noAddCredits(intent, session);
         } else {
             throw new SpeechletException("Invalid Intent");
         }
@@ -106,6 +113,27 @@ public class TestSpeechlet implements Speechlet {
             isAskResponse = true;
         }
         return getSpeechletResponse(speechText, speechText, isAskResponse);
+    }
+
+    private SpeechletResponse tellCredits(Intent intent, Session session) {
+        String speechText = null;
+        if (credits == 0) {
+            speechText = "You dont have any movie credits available. Would you like to purchase 5 credits for $12.99?";
+            credits = 5;
+        } else {
+            speechText = String.format("You have is %s movie credits available", credits);
+        }
+        return getSpeechletResponse(speechText, speechText, true);
+    }
+
+    private SpeechletResponse addCredits(Intent intent, Session session) {
+        String speechText = "Ok. You now have 5 credits";
+        return getSpeechletResponse(speechText, speechText, true);
+    }
+
+    private SpeechletResponse noAddCredits(Intent intent, Session session) {
+        String speechText = "As you wish";
+        return getSpeechletResponse(speechText, speechText, true);
     }
 
     /**

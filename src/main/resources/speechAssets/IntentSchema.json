@@ -15,6 +15,15 @@
     },
     {
       "intent": "TellBandwidthIntent"
+    },
+    {
+      "intent": "TellCreditsIntent"
+    },
+    {
+      "intent": "AddCreditsIntent"
+    },
+    {
+      "intent": "NoAddCreditsIntent"
     }
   ]
 }

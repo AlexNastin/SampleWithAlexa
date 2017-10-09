@@ -1,2 +1,5 @@
 UpBandwidthIntent i need {Bandwidth} bandwidth for the next {Duration}
 TellBandwidthIntent tell me my bandwidth
+TellCreditsIntent how many movie credits do I have
+AddCreditsIntent yes
+NoAddCreditsIntent no
